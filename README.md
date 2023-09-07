@@ -15,7 +15,7 @@ Masai Amusement Park Management System is a java based full stack project which 
 <h2>Functionalities</h2>
 <li>Create Customer</li>
 <li>Create Activity</li>
-<li>Update Activbity</li>
+<li>Update Activity</li>
 <li>View Activity Details</li>
 <li>Buy Ticket</li></li>  
 <li>Delete Ticket</li>
