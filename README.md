@@ -33,6 +33,15 @@ Kentaki Amusement Park Management System is a java based full stack project whic
 <li>ActitvityException</li>
 <li>AdminException</li>
 <li>CustomerException</li>
+
+<h2>Team Members</h2>
+<li>Gaurav Ganguly</li>
+<li>Abhirup Bakshi</li>
+<li>Prathmesh Kurane</li>
+<li>Bikash Bhuyan</li>
+<li>Rahul Kumar Thakur</li>
+
+
 <h2> ER Diagram </h2>
 
 ![alt text](https://github.com/Gaurav000001/Amusement-Park-REST-API/blob/main/ER%20Diagram.png)
