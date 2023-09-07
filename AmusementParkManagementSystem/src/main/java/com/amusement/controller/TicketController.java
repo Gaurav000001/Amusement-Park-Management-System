@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -23,12 +24,13 @@ import com.amusement.service.TicketService;
 import jakarta.validation.Valid;
 
 @RestController
+@RequestMapping("/tickets/")
 public class TicketController {
 	
 	@Autowired
 	TicketService ticketService;
 	
-	@PostMapping("/tickets/{customerId}/{activityId}")
+	@PostMapping("{customerId}/{activityId}")
 	public ResponseEntity<TicketDTO> createTicketHandler(
 			@PathVariable Integer customerId,
 			@PathVariable Integer activityId,
@@ -40,7 +42,7 @@ public class TicketController {
 		return new ResponseEntity<>(ticket, HttpStatus.CREATED);
 	}
 	
-	@PutMapping("/tickets/{customerId}/{ticketId}")
+	@PutMapping("{customerId}/{ticketId}")
 	public ResponseEntity<TicketDTO> updateTicketHandler(
 			@PathVariable Integer customerId,
 			@PathVariable Integer ticketId,
@@ -51,7 +53,7 @@ public class TicketController {
 		return new ResponseEntity<>(ticket, HttpStatus.ACCEPTED);
 	}
 	
-	@GetMapping("/tickets/{customerId}/{ticketId}")
+	@GetMapping("{customerId}/{ticketId}")
 	public ResponseEntity<TicketDTO> getTicketByTicketId(
 			@PathVariable Integer customerId, @PathVariable Integer ticketId) 
 					throws TicketException, CustomerException{
@@ -59,7 +61,7 @@ public class TicketController {
 		return new ResponseEntity<>(ticketService.getTicketById(customerId, ticketId), HttpStatus.OK);
 	}
 	
-	@DeleteMapping("/tickets/{customerId}/{ticketId}")
+	@DeleteMapping("{customerId}/{ticketId}")
 	public ResponseEntity<String> deleteTicketHandler(
 			@PathVariable Integer customerId, @PathVariable Integer ticketId) 
 					throws TicketException, CustomerException{
@@ -80,7 +82,7 @@ public class TicketController {
 		return new ResponseEntity<>(message, status);
 	}
 	
-	@GetMapping("/tickets/{customerId}")
+	@GetMapping("{customerId}")
 	public ResponseEntity<List<TicketDTO>> getTicketBookingHistoryHandler(
 			@PathVariable Integer customerId,
 			@RequestParam("pageNumber") Integer pageNumber,

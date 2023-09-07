@@ -25,7 +25,6 @@ import lombok.extern.slf4j.Slf4j;
 
 @Configuration
 @EnableWebSecurity
-@Slf4j
 public class AppConfig {
 
     @Bean
@@ -34,8 +33,9 @@ public class AppConfig {
         http
                 .authorizeHttpRequests(auth -> {
                     auth
-                            .requestMatchers(HttpMethod.POST, "/customers/", "/customers").permitAll()
-                            .requestMatchers(HttpMethod.DELETE, "/customers/{customerId}", "/customers/{customerId}/").hasRole("USER")
+		                    .requestMatchers("/swagger-ui*/**","/v3/api-docs/**").permitAll()                        
+		                    .requestMatchers(HttpMethod.POST, "/customers/").permitAll()
+                            .requestMatchers(HttpMethod.DELETE, "/customers/{customerId}/").hasRole("USER")
                             .anyRequest().authenticated();
                 })
                 .addFilterBefore(new JwtTokenValidationFilter(), BasicAuthenticationFilter.class)

@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,20 +16,21 @@ import com.amusement.exception.CustomerException;
 import com.amusement.service.AdminService;
 
 @RestController
+@RequestMapping("/admins/")
 public class AdminController {
 	
 	@Autowired
 	private AdminService adminService;
 	
 
-	@DeleteMapping("/admin/delete-process")
+	@DeleteMapping("delete-process")
 	public ResponseEntity<Void> deleteAllCustomersIfTimePassedHandler(){
 		adminService.deleteCustomersIfDeletionTimePassed();
 		
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
-	@GetMapping("/admin/all-customers")
+	@GetMapping("customers/")
 	public ResponseEntity<List<CustomerDTO>> getAllCustomersHandler(
 			@RequestParam Integer pageNumber, @RequestParam Integer recordsPerPage) throws CustomerException{
 		

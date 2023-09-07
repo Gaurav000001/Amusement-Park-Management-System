@@ -21,32 +21,32 @@ import com.amusement.service.ActivityService;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/activities")
+@RequestMapping("/activities/")
 public class ActivityController {
 
 	@Autowired
 	private ActivityService activityService;
 
-	@PostMapping("/")
+	@PostMapping("create/")
 	public ResponseEntity<ActivityDTO> addActivityHandler(@Valid @RequestBody ActivityDTO activity){
 		
 		return new ResponseEntity<>(activityService.createActivity(activity), HttpStatus.CREATED);
 	}
 	
-	@GetMapping("/{activityId}")
+	@GetMapping("{activityId}/")
 	public ResponseEntity<ActivityDTO> getActivityByIdHandler(@PathVariable Integer activityId){
 		
 		return new ResponseEntity<>(activityService.getActivityById(activityId), HttpStatus.OK);
 	}
 	
-	@PutMapping("/{activityId}")
+	@PutMapping("{activityId}/")
 	public ResponseEntity<ActivityDTO> updateActivityHandler(@PathVariable Integer activityId, 
 			@Valid @RequestBody ActivityDTO activity){
 		
 		return new ResponseEntity<>(activityService.updateActivity(activityId, activity), HttpStatus.OK);
 	}
 	
-	@DeleteMapping("/{activityId}")
+	@DeleteMapping("{activityId}/")
 	public ResponseEntity<String> deleteActivityHandler(@PathVariable Integer activityId){
 		
 		Boolean deleteStatus = activityService.deleteActivity(activityId);
@@ -65,7 +65,7 @@ public class ActivityController {
 		return new ResponseEntity<>(message, status);
 	}
 	
-	@GetMapping
+	@GetMapping("deleted/")
 	public ResponseEntity<List<ActivityDTO>> getAllNonDeletedActivitiesHandler(
 			@RequestParam("pageNumber") Integer pageNumber, 
 			@RequestParam("recordsPerPage") Integer recordsPerPage){
@@ -73,7 +73,7 @@ public class ActivityController {
 		return new ResponseEntity<>(activityService.getAllAvailableActivities(pageNumber, recordsPerPage), HttpStatus.OK);
 	}
 	
-	@GetMapping("/")
+	@GetMapping("count/")
 	public ResponseEntity<Integer> getCountOfAllAvailableNonDeletedActivitiesHandler(){
 		
 		return new ResponseEntity<>(activityService.getAvalilableActivityCount(), HttpStatus.OK);
