@@ -35,5 +35,5 @@ Masai Amusement Park Management System is a java based full stack project which 
 <li>CustomerException</li>
 <h2> ER Diagram </h2>
 
-![alt text](https://github.com/prathmesh49/enormous-grip-3/blob/main/FrontEnd/1One.PNG)
+![alt text](https://github.com/Gaurav000001/Amusement-Park-REST-API/blob/main/ER%20Diagram.png)
 
