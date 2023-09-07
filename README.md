@@ -1,6 +1,6 @@
 
 <h1> Kentaki Amusement Park </h1>
-Masai Amusement Park Management System is a java based full stack project which makes the management of a fully fledged amusement park seemless.It is developed using Spring Boot and Security.
+Kentaki Amusement Park Management System is a java based full stack project which makes the management of a fully fledged amusement park seemless.It is developed using Spring Boot and Security.
 <h2>Tech Stacks</h2>
 <li>Core Java</ul>
 <li>Maven</ul>
